@@ -1,117 +1,163 @@
 # Biolink AI
 
-> Personal biolink page built with React, TypeScript, Tailwind CSS, and Vite.
+[![Build](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/beydah/Biolink-AI)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/beydah/Biolink-AI)
+[![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D20-339933)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6)](https://www.typescriptlang.org/)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/placeholder/deploy-status)](https://app.netlify.com/)
-
----
-
-## ⚡ Tech Stack
-
-| Layer     | Technology            |
-| --------- | --------------------- |
-| Framework | React 19 + TypeScript |
-| Bundler   | Vite 7                |
-| Styling   | Tailwind CSS v4       |
-| Animation | Framer Motion         |
-| SEO       | react-helmet-async    |
-| Deploy    | Netlify               |
+> A modern, performant personal biolink page built with React 19, Vite 7, TypeScript, and Tailwind CSS v4.
 
 ---
 
-## 📂 Project Structure
+## Table of Contents
 
-```
-src/
-├── components/
-│   ├── atoms/          → Button, Avatar, Heading, QRCode
-│   ├── molecules/      → ProfileHeader, LinkButton
-│   ├── organisms/      → HeroSection, Footer
-│   ├── templates/      → BiolinkLayout
-│   └── pages/          → HomePage
-├── services/
-│   ├── config/         → profile.ts, types.ts, constants.ts
-│   └── seo/            → meta.ts, types.ts
-├── App.tsx
-├── main.tsx
-└── index.css
-```
-
-**Architecture:** Atomic Design (UI) + Service-Based Monolith (Logic)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Quick Start](#quick-start)
+- [Folder Structure](#folder-structure)
+- [Environment Variables](#environment-variables)
+- [Scripts](#scripts)
+- [Deployment](#deployment)
+- [Documentation](#documentation)
+- [License](#license)
 
 ---
 
-## 🚀 Getting Started
+## Features
+
+- **Atomic Design** — UI built with atoms, molecules, organisms, templates, and pages
+- **Enterprise Naming** — F_Snake_Case functions, C_Snake_Case classes, p_snake_case parameters
+- **Region Comments** — Every file has 5+ structured `#region` blocks
+- **SEO Optimized** — Dynamic meta tags via react-helmet-async, OpenGraph support
+- **Accessible** — ARIA labels, `prefers-reduced-motion` support
+- **Error Resilient** — Global `C_Error_Boundary` catches runtime errors
+- **Environment Validated** — Runtime `.env` validation before app mounts
+- **CI/CD Ready** — GitHub Actions pipeline for lint, type-check, and build
+
+---
+
+## Tech Stack
+
+| Layer         | Technology               |
+| ------------- | ------------------------ |
+| **Framework** | React 19                 |
+| **Build**     | Vite 7                   |
+| **Language**  | TypeScript (strict mode) |
+| **Styling**   | Tailwind CSS v4          |
+| **Animation** | Framer Motion            |
+| **SEO**       | react-helmet-async       |
+| **CI/CD**     | GitHub Actions           |
+| **Hosting**   | Netlify                  |
+
+---
+
+## Quick Start
 
 ### Prerequisites
 
-- Node.js 18+
-- npm 9+
+- Node.js ≥ 20
+- npm ≥ 10
 
-### Install & Run
+### Installation
 
 ```bash
+git clone https://github.com/beydah/Biolink-AI.git
+cd Biolink-AI
 npm install
+```
+
+### Development
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173)
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-### Build for Production
+---
 
-```bash
-npm run build
+## Folder Structure
+
+```
+biolink-ai/
+├── public/assets/              Static files (avatar, QR code, resume)
+├── src/
+│   ├── frontend/               UI layer (Atomic Design)
+│   │   ├── atoms/              Pure UI primitives
+│   │   ├── molecules/          Composed atom groups
+│   │   ├── organisms/          Feature-level sections
+│   │   ├── templates/          Page layout wrappers
+│   │   └── pages/              Route-level views
+│   ├── services/               Shared logic layer
+│   │   ├── config/             Profile data, constants, types
+│   │   ├── seo/                SEO metadata
+│   │   └── utils/              Env validation, logger
+│   ├── app.tsx                 Root component
+│   ├── main.tsx                Entry point
+│   ├── index.css               Design tokens
+│   └── vite_env.d.ts           Env type declarations
+├── docs/                       Project documentation
+├── .github/workflows/          CI/CD pipeline
+└── [config files]              tsconfig, vite, eslint, etc.
 ```
 
-Output: `dist/`
+---
+
+## Environment Variables
+
+Create `.env.development` and `.env.production` in the project root:
+
+```env
+VITE_APP_URL=http://localhost:5173
+```
+
+For production, set `VITE_APP_URL` to your deployed URL (e.g., `https://biolink-ai.netlify.app`).
+
+All environment variables are **validated at runtime** before the app mounts. Missing required variables will log a warning.
 
 ---
 
-## 🌐 Deploy to Netlify
+## Scripts
 
-1. Push to GitHub
-2. Connect repo in [Netlify](https://app.netlify.com/)
-3. Settings auto-detected from `netlify.toml`:
-   - Build: `npm run build`
-   - Publish: `dist`
-4. Add environment variables in **Netlify → Site Settings → Environment Variables**
-
----
-
-## 🔧 Configuration
-
-### Profile Data
-
-Edit [`src/services/config/profile.ts`](src/services/config/profile.ts) to update:
-- Name, title, avatar
-- Social links
-- QR code image
-
-### SEO
-
-Edit [`src/services/seo/meta.ts`](src/services/seo/meta.ts) for page title, description, and OpenGraph tags.
-
-### Environment Variables
-
-| Variable         | Description    |
-| ---------------- | -------------- |
-| `VITE_APP_TITLE` | Page title     |
-| `VITE_APP_URL`   | Production URL |
+| Command                | Description                   |
+| ---------------------- | ----------------------------- |
+| `npm run dev`          | Start dev server              |
+| `npm run build`        | Type-check + production build |
+| `npm run preview`      | Preview production build      |
+| `npm run lint`         | Run ESLint                    |
+| `npm run format`       | Format code with Prettier     |
+| `npm run format:check` | Check formatting              |
 
 ---
 
-## 📱 Features
+## Deployment
 
-- ✅ Mobile-first responsive design
-- ✅ Smooth Framer Motion animations
-- ✅ SEO with OpenGraph support
-- ✅ Accessible (semantic HTML, ARIA labels)
-- ✅ Performance optimized (lazy loading, Tailwind purge)
-- ✅ Type-safe environment variables
-- ✅ Clean Atomic Design architecture
+### Netlify (Recommended)
+
+1. Connect your GitHub repository to Netlify
+2. Build settings are auto-detected from `netlify.toml`:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+   - **Node version:** 20
+3. Set `VITE_APP_URL` in Netlify environment variables
+
+For detailed instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
 ---
 
-## 📄 License
+## Documentation
 
-[MIT](LICENSE)
+| Document                                            | Description                             |
+| --------------------------------------------------- | --------------------------------------- |
+| [ARCHITECTURE.md](docs/ARCHITECTURE.md)             | System architecture and design patterns |
+| [DEPLOYMENT.md](docs/DEPLOYMENT.md)                 | Deployment and environment setup guide  |
+| [NAMING_CONVENTIONS.md](docs/NAMING_CONVENTIONS.md) | Naming rules reference                  |
+| [CONTRIBUTING.md](docs/CONTRIBUTING.md)             | Contribution workflow                   |
+| [SECURITY.md](docs/SECURITY.md)                     | Security policy                         |
+
+---
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](./LICENSE) for details.
