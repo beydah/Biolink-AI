@@ -1,0 +1,31 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #330867;
+  --color-secondary: #30cfd0;
+  --color-accent: #6c63ff;
+  --font-poppins: 'Poppins', sans-serif;
+}
+
+/* Base reset */
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: var(--font-poppins);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(108, 99, 255, 0.3);
+  color: white;
+}
