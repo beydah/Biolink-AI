@@ -81,7 +81,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ```
 biolink-ai/
-├── public/assets/              Static files (avatar, QR code, resume)
+├── public/                     Static files (avatar, icon, data.json)
 ├── src/
 │   ├── frontend/               UI layer (Atomic Design)
 │   │   ├── atoms/              Pure UI primitives
@@ -89,11 +89,10 @@ biolink-ai/
 │   │   ├── organisms/          Feature-level sections
 │   │   ├── templates/          Page layout wrappers
 │   │   └── pages/              Route-level views
-│   ├── services/               Shared logic layer
-│   │   ├── config/             Profile data, constants, types
-│   │   ├── seo/                SEO metadata
+│   ├── backend/                Logic & Config layer
+│   │   ├── config/             Context, types
 │   │   └── utils/              Env validation, logger
-│   ├── app.tsx                 Root component
+│   ├── app.tsx                 Root component (fetches data.json)
 │   ├── main.tsx                Entry point
 │   ├── index.css               Design tokens
 │   └── vite_env.d.ts           Env type declarations
@@ -120,14 +119,12 @@ All environment variables are **validated at runtime** before the app mounts. Mi
 
 ## Scripts
 
-| Command                | Description                   |
-| ---------------------- | ----------------------------- |
-| `npm run dev`          | Start dev server              |
-| `npm run build`        | Type-check + production build |
-| `npm run preview`      | Preview production build      |
-| `npm run lint`         | Run ESLint                    |
-| `npm run format`       | Format code with Prettier     |
-| `npm run format:check` | Check formatting              |
+| Command           | Description                   |
+| ----------------- | ----------------------------- |
+| `npm run dev`     | Start dev server              |
+| `npm run build`   | Type-check + production build |
+| `npm run preview` | Preview production build      |
+| `npm run lint`    | Run ESLint                    |
 
 ---
 

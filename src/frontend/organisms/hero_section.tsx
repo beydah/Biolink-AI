@@ -1,6 +1,6 @@
 // #region HEADER
 // Module: hero_section
-// Organism combining profile header, link buttons, and QR code
+// Organism combining profile header, link buttons, and dynamic QR code
 // #endregion HEADER
 
 // #region LIBRARIES
@@ -8,23 +8,23 @@ import { type FC } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { F_QR_Code } from '@/frontend/atoms'
 import { F_Profile_Header, F_Link_Button } from '@/frontend/molecules'
-import type { ProfileData } from '@/services/config/types'
-import { ANIMATION_DURATION, ANIMATION_STAGGER, ANIMATION_EASE } from '@/services/config/constants'
+import type { ProfileData } from '@/backend/config/types'
+import { ANIMATION_DURATION, ANIMATION_STAGGER, ANIMATION_EASE } from '@/backend/config/constants'
 // #endregion LIBRARIES
 
 // #region VARIABLES
 interface HeroSectionProps {
     readonly profile: ProfileData
+    readonly app_url: string
 }
 // #endregion VARIABLES
 
 // #region CONSTANTS
-// No constants in this module
 // #endregion CONSTANTS
 
 // #region FUNCTIONS
 // Renders the full hero section with staggered entry animations
-const F_Hero_Section: FC<HeroSectionProps> = ({ profile: p_profile }) => {
+const F_Hero_Section: FC<HeroSectionProps> = ({ profile: p_profile, app_url: p_app_url }) => {
     const prefers_reduced = useReducedMotion()
 
     return (
@@ -32,7 +32,7 @@ const F_Hero_Section: FC<HeroSectionProps> = ({ profile: p_profile }) => {
             <F_Profile_Header
                 name={p_profile.name}
                 title={p_profile.title}
-                avatarUrl={p_profile.avatarUrl}
+                avatarUrl={p_profile.avatar_url}
             />
 
             <nav className="flex flex-col items-center gap-4" aria-label="Social links">
@@ -57,7 +57,7 @@ const F_Hero_Section: FC<HeroSectionProps> = ({ profile: p_profile }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: ANIMATION_DURATION, delay: 0.8, ease: ANIMATION_EASE }}
             >
-                <F_QR_Code src={p_profile.qrCodeUrl} alt="Scan to visit" size="md" />
+                <F_QR_Code value={p_app_url} />
             </motion.div>
         </section>
     )

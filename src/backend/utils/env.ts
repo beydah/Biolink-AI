@@ -30,7 +30,7 @@ function F_Validate_Env(): void {
     if (missing_vars.length > 0) {
         console.warn(
             `[ENV] Missing required environment variables: ${missing_vars.join(', ')}. ` +
-            'Check your .env file. See docs/DEPLOYMENT.md for setup instructions.'
+            'Check your .env file or data.json configuration.'
         )
     }
 }

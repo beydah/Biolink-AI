@@ -9,8 +9,8 @@ This document defines the **mandatory** naming rules for the Biolink AI project.
 | Element      | Convention        | Example                      |
 | ------------ | ----------------- | ---------------------------- |
 | Source files | snake_case        | `hero_section.tsx`           |
-| Folders      | snake_case        | `frontend/atoms/`            |
-| User docs    | SNAKE_CASE        | `CONTRIBUTING.md`            |
+| Folders      | snake_case        | `src/frontend/atoms/`        |
+| User docs    | SNAKE_CASE        | `docs/CONTRIBUTING.md`       |
 | Config files | Framework default | `vite.config.ts` (exception) |
 
 ### Framework Exceptions

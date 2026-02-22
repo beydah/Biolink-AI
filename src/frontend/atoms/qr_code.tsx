@@ -1,36 +1,48 @@
 // #region HEADER
 // Module: qr_code
-// Atom component for displaying QR code images
+// Atom component for generating and displaying QR codes programmatically
 // #endregion HEADER
 
 // #region LIBRARIES
-import { type FC, type ImgHTMLAttributes } from 'react'
+import { type FC } from 'react'
+import { QRCodeSVG } from 'qrcode.react'
 // #endregion LIBRARIES
 
-// #region CONSTANTS
-const SIZES = {
-    sm: 'w-32 h-32',
-    md: 'w-48 h-48 sm:w-56 sm:h-56',
-    lg: 'w-64 h-64',
-} as const
-// #endregion CONSTANTS
-
 // #region VARIABLES
-interface QRCodeProps extends ImgHTMLAttributes<HTMLImageElement> {
-    readonly size?: 'sm' | 'md' | 'lg'
+interface QRCodeProps {
+    readonly value: string
+    readonly size?: number
+    readonly className?: string
 }
 // #endregion VARIABLES
 
+// #region CONSTANTS
+const DEFAULT_SIZE = 192
+// #endregion CONSTANTS
+
 // #region FUNCTIONS
-// Renders a rounded QR code image with lazy loading
-const F_QR_Code: FC<QRCodeProps> = ({ size: p_size = 'md', className: p_class_name = '', alt: p_alt = 'QR Code', ...p_rest }) => {
+/**
+ * Renders an SVG QR code using qrcode.react
+ * Optimized for beydahsaglam.netlify.app distribution
+ */
+const F_QR_Code: FC<QRCodeProps> = ({ value: p_value, size: p_size = DEFAULT_SIZE, className: p_class_name = '' }) => {
     return (
-        <img
-            className={`rounded-2xl shadow-xl object-cover ${SIZES[p_size]} ${p_class_name}`}
-            alt={p_alt}
-            loading="lazy"
-            {...p_rest}
-        />
+        <div className={`p-4 bg-white rounded-2xl shadow-xl inline-block ${p_class_name}`}>
+            <QRCodeSVG
+                value={p_value}
+                size={p_size}
+                level="H"
+                includeMargin={false}
+                imageSettings={{
+                    src: "/icon.png",
+                    x: undefined,
+                    y: undefined,
+                    height: 24,
+                    width: 24,
+                    excavate: true,
+                }}
+            />
+        </div>
     )
 }
 // #endregion FUNCTIONS

@@ -4,30 +4,35 @@
 
 | Environment | URL                     | Config File        |
 | ----------- | ----------------------- | ------------------ |
-| Development | `http://localhost:5173` | `.env.development` |
-| Production  | Your deployed URL       | `.env.production`  |
+| Development | `http://localhost:5173` | `.env.example`     |
+| Production  | Your deployed URL       | `public/data.json` |
 
 ---
 
 ## Environment Setup
 
-### 1. Create Environment Files
+### 1. Configure Site Content
 
-```bash
-# Development
-echo "VITE_APP_URL=http://localhost:5173" > .env.development
+Modify `public/data.json` to update your profile, links, and SEO settings:
 
-# Production
-echo "VITE_APP_URL=https://your-domain.netlify.app" > .env.production
+```json
+{
+  "app_url": "https://your-site.netlify.app",
+  "app_title": "My Biolink",
+  "profile": {
+    "name": "Your Name",
+    "links": [...]
+  }
+}
 ```
 
-### 2. Environment Variables Reference
+### 2. Environment Variables (.env)
 
-| Variable       | Required | Description                          |
-| -------------- | :------: | ------------------------------------ |
-| `VITE_APP_URL` |    ✅     | Base URL for absolute OG image paths |
+| Variable       | Required | Description                                     |
+| -------------- | :------: | ----------------------------------------------- |
+| `VITE_APP_URL` |    ✅     | Base URL for absolute OG image paths (fallback) |
 
-All `VITE_` prefixed variables are **public** and bundled into the client build. Never store secrets in `VITE_` variables.
+Note: Most configuration is now centralized in `data.json`.
 
 ---
 
@@ -48,15 +53,7 @@ All `VITE_` prefixed variables are **public** and bundled into the client build.
   NODE_VERSION = "20"
 ```
 
-4. Set environment variables in **Site Settings → Environment Variables**:
-   - `VITE_APP_URL` = your Netlify URL
-
-### Manual Deploy
-
-```bash
-npm run build
-npx netlify-cli deploy --prod --dir=dist
-```
+4. Set `VITE_APP_URL` in **Site Settings → Environment Variables**.
 
 ---
 
@@ -64,38 +61,16 @@ npx netlify-cli deploy --prod --dir=dist
 
 The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and PR:
 
-| Step       | Command                        | Purpose                  |
-| ---------- | ------------------------------ | ------------------------ |
-| Install    | `npm ci`                       | Clean dependency install |
-| Lint       | `npm run lint`                 | Code quality check       |
-| Type Check | `npx tsc -b`                   | TypeScript validation    |
-| Build      | `npm run build`                | Production bundle        |
-| Audit      | `npm audit --audit-level=high` | Security check           |
+| Step       | Command         | Purpose                  |
+| ---------- | --------------- | ------------------------ |
+| Install    | `npm ci`        | Clean dependency install |
+| Lint       | `npm run lint`  | Code quality check       |
+| Type Check | `npx tsc -b`    | TypeScript validation    |
+| Build      | `npm run build` | Production bundle        |
 
 ---
 
 ## Customization
-
-### Profile Data
-
-Edit `src/services/config/profile.ts`:
-
-```typescript
-export const PROFILE: ProfileData = {
-  name: 'Your Name',
-  title: 'Your Title',
-  avatarUrl: '/assets/avatar.jpg',
-  qrCodeUrl: '/assets/qr-code.jpg',
-  links: [
-    { label: 'Website', url: 'https://yoursite.com/', isExternal: false },
-    { label: 'GitHub', url: 'https://github.com/you', isExternal: true },
-  ],
-} as const
-```
-
-### SEO Metadata
-
-Edit `src/services/seo/meta.ts` to update title, description, and OpenGraph tags.
 
 ### Design Tokens
 
@@ -108,3 +83,7 @@ Edit `src/index.css` to modify colors and fonts:
   --font-poppins: 'Poppins', sans-serif;
 }
 ```
+
+### Content Updates
+
+Simply edit `public/data.json`. The site will fetch the new values at runtime without needing a full code rebuild (unless hosted on CDNs that cache JSON aggressively).

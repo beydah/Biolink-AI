@@ -1,6 +1,6 @@
 // #region HEADER
 // Module: types
-// TypeScript interfaces for profile and link data structures
+// TypeScript interfaces for centralized application configuration (data.json)
 // #endregion HEADER
 
 // #region LIBRARIES
@@ -11,15 +11,29 @@
 export interface LinkItem {
     readonly label: string
     readonly url: string
-    readonly isExternal: boolean
+    readonly is_external: boolean
 }
 
 export interface ProfileData {
     readonly name: string
     readonly title: string
-    readonly avatarUrl: string
-    readonly qrCodeUrl: string
+    readonly avatar_url: string
     readonly links: readonly LinkItem[]
+}
+
+export interface SeoMeta {
+    readonly title: string
+    readonly description: string
+    readonly og_title?: string
+    readonly og_description?: string
+    readonly og_image?: string
+}
+
+export interface AppConfig {
+    readonly app_url: string
+    readonly app_title: string
+    readonly profile: ProfileData
+    readonly seo: SeoMeta
 }
 // #endregion VARIABLES
 

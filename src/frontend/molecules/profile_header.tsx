@@ -7,7 +7,7 @@
 import { type FC } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { F_Avatar, F_Heading } from '@/frontend/atoms'
-import { ANIMATION_DURATION, ANIMATION_EASE } from '@/services/config/constants'
+import { ANIMATION_DURATION, ANIMATION_EASE } from '@/backend/config/constants'
 // #endregion LIBRARIES
 
 // #region VARIABLES

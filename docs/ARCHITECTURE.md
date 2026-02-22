@@ -18,25 +18,25 @@
 │  │  ┌──────────────────────────────────┐    │   │
 │  │  │  HelmetProvider (SEO)            │    │   │
 │  │  │  ┌──────────────────────────┐    │    │   │
-│  │  │  │  C_Error_Boundary        │    │    │   │
-│  │  │  │  ┌──────────────────┐    │    │    │   │
-│  │  │  │  │  F_Home_Page     │    │    │    │   │
-│  │  │  │  └──────────────────┘    │    │    │   │
+│  │  │  │  ConfigProvider (Context)  │    │    │   │
+│  │  │  │  ┌────────────────────┐    │    │    │   │
+│  │  │  │  │  C_Error_Boundary  │    │    │    │   │
+│  │  │  │  │  ┌──────────────┐  │    │    │    │   │
+│  │  │  │  │  │ F_Home_Page  │  │    │    │    │   │
+│  │  │  │  │  └──────────────┘  │    │    │    │   │
+│  │  │  │  └────────────────────┘    │    │    │   │
 │  │  │  └──────────────────────────┘    │    │   │
 │  │  └──────────────────────────────────┘    │   │
 │  └──────────────────────────────────────────┘   │
 │                                                  │
 ├──────────────────┬──────────────────────────────┤
-│   Frontend Layer │       Services Layer          │
+│   Frontend Layer │        Backend Layer          │
 │                  │                               │
 │  atoms/          │  config/                      │
-│  molecules/      │    constants.ts               │
-│  organisms/      │    profile.ts                 │
-│  templates/      │    types.ts                   │
-│  pages/          │  seo/                         │
-│                  │    meta.ts, types.ts           │
-│                  │  utils/                        │
-│                  │    env.ts, logger.ts           │
+│  molecules/      │    context.tsx                │
+│  organisms/      │    types.ts                   │
+│  templates/      │  utils/                       │
+│  pages/          │    env.ts, logger.ts          │
 └──────────────────┴──────────────────────────────┘
 ```
 
@@ -58,44 +58,45 @@
 
 ```
 pages → organisms → molecules → atoms
-pages → services (config, seo)
-organisms → services (config)
+pages → backend (config, utils)
+organisms → backend (config)
 ```
 
 No component imports from a higher level. No circular dependencies.
 
-### Service-Based Monolith (Services Layer)
+### Unified Configuration (Backend Layer)
 
-| Module    | Responsibility                            |
-| --------- | ----------------------------------------- |
-| `config/` | Profile data, app constants, shared types |
-| `seo/`    | SEO metadata configuration                |
-| `utils/`  | Environment validation, logging           |
+| Module    | Responsibility                  |
+| --------- | ------------------------------- |
+| `config/` | Config context, shared types    |
+| `utils/`  | Environment validation, logging |
 
 ---
 
 ## Data Flow
 
 ```
-Profile Data (services/config/profile.ts)
-    ↓
+public/data.json
+    ↓ (fetched at runtime)
+F_App (app.tsx)
+    ↓ (provided via Context)
 F_Home_Page (pages/)
     ↓
 F_Hero_Section (organisms/)
     ├── F_Profile_Header (molecules/) → F_Avatar + F_Heading (atoms/)
     ├── F_Link_Button (molecules/) → F_Button (atoms/)
-    └── F_QR_Code (atoms/)
+    └── F_QR_Code (atoms/) → Programmatic SVG
 ```
 
-All data is **static and compile-time**. No runtime API calls, no state management library needed.
+All data is **externalized to data.json** for easy modification without code changes.
 
 ---
 
 ## Error Handling Strategy
 
-| Layer           | Mechanism                                                  |
-| --------------- | ---------------------------------------------------------- |
-| **Build-time**  | TypeScript strict mode catches type errors                 |
-| **Runtime**     | `C_Error_Boundary` catches unhandled React errors          |
-| **Logging**     | `F_Log` utility with structured levels (info, warn, error) |
-| **Environment** | `F_Validate_Env` checks required variables before mount    |
+| Layer          | Mechanism                                                   |
+| -------------- | ----------------------------------------------------------- |
+| **Build-time** | TypeScript strict mode catches type errors                  |
+| **Runtime**    | `C_Error_Boundary` catches unhandled React errors           |
+| **Data**       | Loading/Error states in `F_Home_Page` handle fetch failures |
+| **Logging**    | `F_Log` utility with structured levels (info, warn, error)  |

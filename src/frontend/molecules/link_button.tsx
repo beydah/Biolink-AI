@@ -6,7 +6,7 @@
 // #region LIBRARIES
 import { type FC } from 'react'
 import { F_Button } from '@/frontend/atoms'
-import type { LinkItem } from '@/services/config/types'
+import type { LinkItem } from '@/backend/config/types'
 // #endregion LIBRARIES
 
 // #region VARIABLES
@@ -25,8 +25,8 @@ const F_Link_Button: FC<LinkButtonProps> = ({ link: p_link }) => {
     return (
         <a
             href={p_link.url}
-            target={p_link.isExternal ? '_blank' : '_self'}
-            rel={p_link.isExternal ? 'noopener noreferrer' : undefined}
+            target={p_link.is_external ? '_blank' : '_self'}
+            rel={p_link.is_external ? 'noopener noreferrer' : undefined}
             className="no-underline"
             aria-label={p_link.label}
         >
