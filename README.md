@@ -3,7 +3,7 @@
 [![Build](https://img.shields.io/badge/build-passing-brightgreen)](https://github.com/beydah/Biolink-AI)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue)](https://github.com/beydah/Biolink-AI)
 [![License](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
-[![Node](https://img.shields.io/badge/node-%3E%3D20-339933)](https://nodejs.org/)
+[![Node](https://img.shields.io/badge/node-%3E%3D22-339933)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6)](https://www.typescriptlang.org/)
 
 > A modern, performant personal biolink page built with React 19, Vite 7, TypeScript, and Tailwind CSS v4.
@@ -56,7 +56,7 @@
 
 ### Prerequisites
 
-- Node.js ≥ 20
+- Node.js ≥ 22
 - npm ≥ 10
 
 ### Installation
@@ -136,7 +136,7 @@ All environment variables are **validated at runtime** before the app mounts. Mi
 2. Build settings are auto-detected from `netlify.toml`:
    - **Build command:** `npm run build`
    - **Publish directory:** `dist`
-   - **Node version:** 20
+   - **Node version:** 22
 3. Set `VITE_APP_URL` in Netlify environment variables
 
 For detailed instructions, see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).

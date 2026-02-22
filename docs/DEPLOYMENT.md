@@ -50,7 +50,7 @@ Note: Most configuration is now centralized in `data.json`.
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
 ```
 
 4. Set `VITE_APP_URL` in **Site Settings → Environment Variables**.
