@@ -1,5 +1,0 @@
-export { default as Avatar } from './Avatar'
-export { default as Button } from './Button'
-export { default as ErrorBoundary } from './ErrorBoundary'
-export { default as Heading } from './Heading'
-export { default as QRCode } from './QRCode'

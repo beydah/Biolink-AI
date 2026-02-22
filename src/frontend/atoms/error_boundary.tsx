@@ -1,5 +1,13 @@
-import { Component, type ErrorInfo, type ReactNode } from 'react'
+// #region HEADER
+// Module: error_boundary
+// Class component for catching and displaying runtime errors
+// #endregion HEADER
 
+// #region LIBRARIES
+import { Component, type ErrorInfo, type ReactNode } from 'react'
+// #endregion LIBRARIES
+
+// #region VARIABLES
 interface ErrorBoundaryProps {
     readonly children: ReactNode
 }
@@ -7,10 +15,13 @@ interface ErrorBoundaryProps {
 interface ErrorBoundaryState {
     readonly hasError: boolean
 }
+// #endregion VARIABLES
 
-class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
-    constructor(props: ErrorBoundaryProps) {
-        super(props)
+// #region CLASSES
+// Catches unhandled errors in the component tree and renders a fallback UI
+class C_Error_Boundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+    constructor(p_props: ErrorBoundaryProps) {
+        super(p_props)
         this.state = { hasError: false }
     }
 
@@ -18,8 +29,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         return { hasError: true }
     }
 
-    componentDidCatch(error: Error, info: ErrorInfo): void {
-        console.error('ErrorBoundary caught:', error, info.componentStack)
+    componentDidCatch(p_error: Error, p_info: ErrorInfo): void {
+        console.error('C_Error_Boundary caught:', p_error, p_info.componentStack)
     }
 
     render(): ReactNode {
@@ -41,5 +52,8 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
         return this.props.children
     }
 }
+// #endregion CLASSES
 
-export default ErrorBoundary
+// #region EXPORTS
+export default C_Error_Boundary
+// #endregion EXPORTS

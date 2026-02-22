@@ -1,15 +1,32 @@
+// #region HEADER
+// Module: footer
+// Organism for the page footer with attribution link
+// #endregion HEADER
+
+// #region LIBRARIES
 import { type FC } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { PROFILE } from '@/services/config/profile'
 import { ANIMATION_DURATION, ANIMATION_EASE } from '@/services/config/constants'
+// #endregion LIBRARIES
 
-const Footer: FC = () => {
-    const prefersReduced = useReducedMotion()
+// #region VARIABLES
+// No variables in this module
+// #endregion VARIABLES
+
+// #region CONSTANTS
+// No constants in this module
+// #endregion CONSTANTS
+
+// #region FUNCTIONS
+// Renders footer with animated fade-in and creator attribution
+const F_Footer: FC = () => {
+    const prefers_reduced = useReducedMotion()
 
     return (
         <motion.footer
             className="py-6 text-center"
-            initial={prefersReduced ? false : { opacity: 0 }}
+            initial={prefers_reduced ? false : { opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: ANIMATION_DURATION, delay: 1, ease: ANIMATION_EASE }}
         >
@@ -25,5 +42,8 @@ const Footer: FC = () => {
         </motion.footer>
     )
 }
+// #endregion FUNCTIONS
 
-export default Footer
+// #region EXPORTS
+export default F_Footer
+// #endregion EXPORTS

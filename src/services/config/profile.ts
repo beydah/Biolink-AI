@@ -1,5 +1,17 @@
-import type { ProfileData } from './types'
+// #region HEADER
+// Module: profile
+// Centralized profile data for the biolink page
+// #endregion HEADER
 
+// #region LIBRARIES
+import type { ProfileData } from './types'
+// #endregion LIBRARIES
+
+// #region VARIABLES
+// No variables in this module
+// #endregion VARIABLES
+
+// #region CONSTANTS
 export const PROFILE: ProfileData = {
     name: 'Beydah Saglam',
     title: 'Fullstack Developer',
@@ -33,3 +45,8 @@ export const PROFILE: ProfileData = {
         },
     ],
 } as const
+// #endregion CONSTANTS
+
+// #region EXPORTS
+// PROFILE exported in-place
+// #endregion EXPORTS

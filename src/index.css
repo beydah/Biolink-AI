@@ -1,5 +1,13 @@
-@import 'tailwindcss';
+/* #region HEADER */
+/* Module: index.css */
+/* Design system tokens and base reset */
+/* #endregion HEADER */
 
+/* #region LIBRARIES */
+@import 'tailwindcss';
+/* #endregion LIBRARIES */
+
+/* #region CONSTANTS */
 @theme {
   --color-primary: #330867;
   --color-primary-dark: #1a1a4e;
@@ -8,7 +16,9 @@
   --font-poppins: 'Poppins', sans-serif;
 }
 
-/* Base reset */
+/* #endregion CONSTANTS */
+
+/* #region VARIABLES */
 html,
 body,
 #root {
@@ -20,18 +30,18 @@ body,
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Selection styling */
 ::selection {
   background-color: rgba(108, 99, 255, 0.3);
   color: white;
 }
 
-/* Reduced motion support */
+/* #endregion VARIABLES */
+
+/* #region UTILITIES */
 @media (prefers-reduced-motion: reduce) {
 
   *,
@@ -43,3 +53,5 @@ html {
     scroll-behavior: auto !important;
   }
 }
+
+/* #endregion UTILITIES */
