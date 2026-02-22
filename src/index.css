@@ -2,6 +2,7 @@
 
 @theme {
   --color-primary: #330867;
+  --color-primary-dark: #1a1a4e;
   --color-secondary: #30cfd0;
   --color-accent: #6c63ff;
   --font-poppins: 'Poppins', sans-serif;
@@ -28,4 +29,17 @@ html {
 ::selection {
   background-color: rgba(108, 99, 255, 0.3);
   color: white;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

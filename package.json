@@ -1,12 +1,14 @@
 {
-  "name": "biolink-temp",
+  "name": "biolink-ai",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/",
     "preview": "vite preview"
   },
   "dependencies": {

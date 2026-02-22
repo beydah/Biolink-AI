@@ -6,5 +6,5 @@ export const DEFAULT_SEO: SeoMeta = {
         'Beydah Saglam — Fullstack Developer. Personal biolink with portfolio, contact, and social media links.',
     ogTitle: 'Beydah Saglam | Fullstack Developer',
     ogDescription: 'Personal biolink with portfolio, contact, and social media links.',
-    ogImage: '/assets/avatar.jpg',
+    ogImage: `${import.meta.env.VITE_APP_URL}/assets/avatar.jpg`,
 }

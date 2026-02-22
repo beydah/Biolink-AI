@@ -2,7 +2,6 @@ export interface LinkItem {
     readonly label: string
     readonly url: string
     readonly isExternal: boolean
-    readonly icon?: string
 }
 
 export interface ProfileData {
