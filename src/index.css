@@ -7,3 +7,28 @@
     @apply m-0 p-0 overflow-x-hidden;
   }
 }
+
+@layer utilities {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 rounded-full transition-colors duration-300;
+  }
+  
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    @apply bg-zinc-600;
+  }
+
+  /* Support for Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #27272a transparent;
+  }
+}
