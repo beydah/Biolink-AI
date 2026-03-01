@@ -1,57 +1,9 @@
-/* #region HEADER */
-/* Module: index.css */
-/* Design system tokens and base reset */
-/* #endregion HEADER */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* #region LIBRARIES */
-@import 'tailwindcss';
-/* #endregion LIBRARIES */
-
-/* #region CONSTANTS */
-@theme {
-  --color-primary: #330867;
-  --color-primary-dark: #1a1a4e;
-  --color-secondary: #30cfd0;
-  --color-accent: #6c63ff;
-  --font-poppins: 'Poppins', sans-serif;
-}
-
-/* #endregion CONSTANTS */
-
-/* #region VARIABLES */
-html,
-body,
-#root {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  font-family: var(--font-poppins);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-::selection {
-  background-color: rgba(108, 99, 255, 0.3);
-  color: white;
-}
-
-/* #endregion VARIABLES */
-
-/* #region UTILITIES */
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+@layer base {
+  body {
+    @apply m-0 p-0 overflow-x-hidden;
   }
 }
-
-/* #endregion UTILITIES */

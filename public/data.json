@@ -1,43 +1,24 @@
 {
-    "app_url": "https://beydahsaglam.netlify.app",
-    "app_title": "Biolink AI",
-    "profile": {
-        "name": "Beydah Saglam",
-        "title": "Fullstack Developer",
-        "avatar_url": "/avatar.jpg",
+    "user": {
+        "full_name": "Beydah Saglam",
+        "position": "Full Stack Developer",
+        "qr_code_link": "https://beydahsaglam.netlify.app/",
         "links": [
             {
-                "label": "Website",
+                "name": "Website",
                 "url": "https://beydahsaglam.com/",
-                "is_external": false
+                "icon": "website"
             },
             {
-                "label": "LinkedIn",
-                "url": "https://www.linkedin.com/in/beydah",
-                "is_external": true
+                "name": "LinkedIn",
+                "url": "https://www.linkedin.com/in/beydah/",
+                "icon": "linkedin"
             },
             {
-                "label": "Fiverr",
-                "url": "https://www.fiverr.com/ilkaysaglam",
-                "is_external": true
-            },
-            {
-                "label": "GitHub",
-                "url": "https://www.github.com/beydah",
-                "is_external": true
-            },
-            {
-                "label": "Mail",
-                "url": "mailto:info.beydahsaglam@gmail.com",
-                "is_external": true
+                "name": "GitHub",
+                "url": "https://github.com/beydah",
+                "icon": "github"
             }
         ]
-    },
-    "seo": {
-        "title": "Beydah Saglam | Fullstack Developer",
-        "description": "Beydah Saglam — Fullstack Developer. Personal biolink with portfolio, contact, and social media links.",
-        "og_title": "Beydah Saglam | Fullstack Developer",
-        "og_description": "Personal biolink with portfolio, contact, and social media links.",
-        "og_image": "/avatar.jpg"
     }
 }
