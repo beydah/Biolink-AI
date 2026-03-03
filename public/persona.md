@@ -52,6 +52,30 @@ I view code not merely as a functional requirement to close a Jira ticket, but a
 
 ---
 
+## 🔹 Architectural Philosophy & System Design Approach
+
+I design systems with long-term scalability and structural clarity in mind.
+
+### **UI Architecture**
+* Atomic Design methodology for scalable and reusable component systems
+
+### **Frontend Architecture**
+* Domain-Driven Design (DDD) principles applied to modular feature boundaries
+* Strong separation of concerns and state isolation
+* Microservice-ready frontend structure even in small-scale applications
+
+### **Backend Architecture**
+* Domain-Driven Design (DDD)
+* Clean Architecture layering
+* Service-oriented modularization
+* Explicit domain boundaries and business logic isolation
+
+Although I am experienced with MVC architecture patterns, I generally avoid rigid MVC structures in favor of domain-centric and service-oriented designs.
+
+Even in small monolith or monorepo projects, I architect systems as if they will eventually transition to microservices. This forward-compatible structuring significantly reduces friction during future service decomposition and distributed system migration.
+
+---
+
 ## 🔹 My Technical DNA: The Comprehensive Stack
 
 Unlike highly siloed engineers who confine themselves to a single tier, I operate with a holistic, end-to-end systems-thinking paradigm.
@@ -59,7 +83,6 @@ Unlike highly siloed engineers who confine themselves to a single tier, I operat
 ### **Frontend & Client Systems**
 * React (Vite)
 * Tailwind CSS (shadcn/ui)
-* TypeScript
 * Client Storage (IndexedDB)
 * WordPress (when strategically appropriate)
 
@@ -69,30 +92,26 @@ Unlike highly siloed engineers who confine themselves to a single tier, I operat
 * RESTful API Design
 * C# & .NET (for structured enterprise-style applications)
 
-### **Databases & Data Infrastructure**
-* Supabase (PostgreSQL)
+### **Supabase (PostgreSQL) & Data Infrastructure**
 * Schema-first relational database modeling
 * Intensive read/write performance optimization
 
-### **Quantitative & Data-Driven Systems**
+### **Data-Driven Systems**
 * API integrations across multiple third-party platforms
-* Indicator-based analytical modeling
-* Heuristic decision systems
 * Structured backtesting and logic validation pipelines
 
 ### **Infrastructure & DevOps**
 * Docker containerization
 * Coolify deployment orchestration
+* Netlify (for hobby projects)
 * Linux & Windows server environments
 * Git version control (GitHub)
 
 ### **AI & Agentic Workflow Engineering**
 * n8n (with Gemini models)
 * Antigravity (with Claude models)
-* Model Fine-Tuning, Prompt Engineering
+* Model Fine-Tuning & Prompt Engineering
 * Google Gemini API integrations
-* Model Context Protocol (MCP) experimentation
-* Telegram & WhatsApp automation bots
 * Multi-agent orchestration architecture
 
 ### **Product & Workflow Tooling**
@@ -100,7 +119,7 @@ Unlike highly siloed engineers who confine themselves to a single tier, I operat
 * Trello
 * Agile / Scrum methodologies
 * Clean Architecture principles
-* Heuristic algorithm engineering
+* Algorithm engineering
 
 ---
 
