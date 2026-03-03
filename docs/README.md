@@ -67,7 +67,7 @@ src/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/biolink-ai.git
+   git clone https://github.com/beydah/biolink-ai.git
    cd biolink-ai
    ```
 
@@ -95,9 +95,9 @@ src/
    npm run dev
    ```
 
-6. **Build for Production:**
+6. **Add on Netlify**
    ```bash
-   npm run build
+   Insert netlify with .env values
    ```
 
 ---
