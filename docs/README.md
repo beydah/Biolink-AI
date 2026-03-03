@@ -31,14 +31,27 @@
 
 ## 🏗️ Architecture Stack
 
-### Structural Philosophy
-The project strictly enforces **Atomic Design** to maintain a scalable component hierarchy.
-* `src/components/ui/`
-  * `/atoms` — Base UI elements (typography, buttons, icons).
-  * `/molecules` — Composites (card components, input rows).
-  * `/organisms` — Complex assemblies.
-* `src/features/` — Contains isolated functional domains (e.g., `ai_chat`, feature wrappers).
-* `src/services/` — All third-party interactions, LLM fetches, and database logic (Gemini API, IndexedDB).
+### Project Structure
+The project follows a clean, flat architecture with clear separation of concerns.
+
+```
+src/
+├── app.tsx              # Root application component
+├── main.tsx             # Entry point
+├── index.css            # Global styles & Tailwind directives
+├── app.css              # App-specific styles
+├── components/          # Reusable UI components
+│   ├── button.tsx       # Atomic Button component
+│   └── typography.tsx   # Heading/typography component
+└── services/            # Business logic, API & persistence
+    ├── ai_chat.tsx      # Gemini-powered AI chat interface
+    ├── card_container.tsx # Card flip animation wrapper
+    ├── gemini_api_service.ts  # Gemini API proxy calls
+    └── indexed_db_service.ts  # IndexedDB persistence layer
+```
+
+* `src/components/` — Reusable, stateless UI building blocks (buttons, typography).
+* `src/services/` — All business logic, AI chat interface, API integrations, and IndexedDB persistence.
 
 ### Database & Persistence
 - **Client-Side Storage**: IndexedDB is exclusively used for session resilience. It retains the daily chat history and the timeout countdowns for the API limits.

@@ -1,8 +1,8 @@
 // #region library
 import { useState, useEffect, useRef } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { F_Send_Ai_Message } from '../services/gemini_api_service';
-import { F_Get_Usage, F_Update_Usage, F_Save_Chat_History, F_Load_Chat_History, F_Clear_Chat_Db } from '../services/indexed_db_service';
+import { F_Send_Ai_Message } from './gemini_api_service';
+import { F_Get_Usage, F_Update_Usage, F_Save_Chat_History, F_Load_Chat_History, F_Clear_Chat_Db } from './indexed_db_service';
 import { Send, Trash2, AlertCircle, MoreVertical, LogOut, Clock } from 'lucide-react';
 // #endregion
 

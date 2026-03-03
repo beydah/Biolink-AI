@@ -34,16 +34,15 @@ All files, folders, and variables must follow the specified conventions. The sys
 
 ## 🏗️ 2. Architectural Structure
 
-Biolink-AI leverages **Feature-based architecture** and **Atomic Design** principles.
+Biolink-AI uses a clean, flat architecture with two main directories.
 
-1. **UI Components (`src/components/ui/`)**: Everything must be categorized atomically.
-   - `/atoms`: Typography, Buttons, Icons, standard Inputs.
-   - `/molecules`: Form groups, complex cards, isolated widgets.
-   - `/organisms`: Complete sidebars, headers, large functional blocks.
+1. **Components (`src/components/`)**: Reusable, stateless UI building blocks such as buttons and typography elements. Keep components focused and single-purpose.
 
-2. **Features (`src/features/`)**: High-level, stateful domains. E.g., the Gemini AI chat interface logic must be built in `src/features/ai_chat/`. No business logic mixed directly into page roots.
-
-3. **Services (`src/services/`)**: API integrations or persistence layers. This is explicitly where the `Gemini API` hooks and `IndexedDB` managers live.
+2. **Services (`src/services/`)**: All stateful business logic, API integrations, and persistence layers. This includes:
+   - `ai_chat.tsx` — The Gemini-powered AI chat interface.
+   - `card_container.tsx` — Card flip animation wrapper.
+   - `gemini_api_service.ts` — Gemini API proxy calls.
+   - `indexed_db_service.ts` — IndexedDB persistence manager.
 
 ---
 

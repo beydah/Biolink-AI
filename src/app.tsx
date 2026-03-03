@@ -1,8 +1,8 @@
 // #region library
 import { useState, useEffect } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
-import { F_Ai_Chat } from './features/ai_chat';
-import { F_Heading } from './components/ui/atoms/typography';
+import { F_Ai_Chat } from './services/ai_chat';
+import { F_Heading } from './components/typography';
 import { Sparkles, Github, Linkedin, Globe } from 'lucide-react';
 // #endregion
 
