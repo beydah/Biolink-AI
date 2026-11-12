@@ -8,7 +8,7 @@ export const F_Send_Ai_Message = async (p_user_prompt: string, p_persona: string
         body: JSON.stringify({
             prompt: p_user_prompt,
             persona: p_persona,
-            history: p_history
+            history: p_history.slice(-5)
         })
     });
 
