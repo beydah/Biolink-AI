@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { F_Parse_Chat_Request } from './chat_validation.js';
 
 let G_Selected_Model = '';
 
@@ -34,7 +35,15 @@ export const handler = async (event, context) => {
     }
 
     try {
-        const { prompt, persona, history } = JSON.parse(event.body);
+        const parsed_request = F_Parse_Chat_Request(event.body);
+        if (!parsed_request.value) {
+            return {
+                statusCode: parsed_request.statusCode,
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ error: parsed_request.error }),
+            };
+        }
+        const { prompt, persona, history } = parsed_request.value;
         const API_KEY = process.env.VITE_GEMINI_API_KEY;
 
         if (!API_KEY) {
@@ -86,4 +95,14 @@ export const handler = async (event, context) => {
             body: JSON.stringify({ error: 'Failed to generate response' })
         };
     }
+};
+
+export const config = {
+    path: "/.netlify/functions/chat",
+    rateLimit: {
+        action: "rate_limit",
+        aggregateBy: "ip",
+        windowLimit: 10,
+        windowSize: 60,
+    },
 };
